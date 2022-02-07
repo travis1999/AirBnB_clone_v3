@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
+"""# -*- coding: utf-8 -*-"""
 
 from flask import Blueprint
 app_views = Blueprint('app_views', __name__, url_prefix="/api/v1")
