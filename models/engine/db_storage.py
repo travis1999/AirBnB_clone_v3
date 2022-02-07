@@ -39,7 +39,7 @@ class DBStorage:
                                              HBNB_MYSQL_DB))
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
-    
+
     def models(self):
         """return a dictionary of all objects in the database"""
         return classes
