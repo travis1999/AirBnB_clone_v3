@@ -19,4 +19,5 @@ def stats():
     """
     returns the number of objects in the storage
     """
-    return jsonify({key: storage.count(value) for key, value in storage.models().items()})
+    return jsonify({key: storage.count(value) 
+            for key, value in storage.models().items()})
