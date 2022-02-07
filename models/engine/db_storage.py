@@ -75,11 +75,9 @@ class DBStorage:
 
         if cls is not None:
             return self.__session.query(cls).count()
-        
-        for clss in classes:
-            count += self.__session.query(classes[cls]).count()
-        return count
-        
+
+        return sum(self.__session.query(classes[cls]).count() for _ in classes)
+
     def all(self, cls=None):
         """query on the current database session"""
         new_dict = {}
