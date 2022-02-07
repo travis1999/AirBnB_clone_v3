@@ -50,7 +50,9 @@ class FileStorage:
         """
         if not self.__objects:
             self.reload()
-        key = cls.__name__ + '.' + id
+
+        c_name = cls if isinstance(cls, str) else cls.__name__
+        key = c_name + '.' + id
         if key in self.__objects:
             return self.__objects[key]
 
@@ -71,9 +73,9 @@ class FileStorage:
 
         count = 0
         for value in self.__objects.values():
+            value = classes[cls] if isinstance(cls, str) else cls
             count += 1 if value.__class__ == cls else 0
         return count
->>>>>>> a74af711bbe646ab3ea78cdbe27517353ca69d77
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
