@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*
-# -
+
 from flask import Flask, jsonify
 from api.v1.views import app_views
 from models import storage
