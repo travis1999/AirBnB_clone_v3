@@ -55,6 +55,10 @@ class DBStorage:
         """
         if self.__session is None:
             self.reload()
+
+        if isinstance(cls, str):
+            cls = classes[cls]
+
         return self.__session.query(cls).filter_by(id=id).first()
 
     def count(self, cls=None):
