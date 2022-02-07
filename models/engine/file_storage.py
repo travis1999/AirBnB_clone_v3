@@ -34,6 +34,10 @@ class FileStorage:
             return new_dict
         return self.__objects
 
+    def models(self):
+        """return a dictionary of all objects in the database"""
+        return classes
+
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         if obj is not None:
