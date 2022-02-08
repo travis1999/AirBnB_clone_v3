@@ -44,11 +44,11 @@ def post_amenity():
     posts a new state
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
 
     if "name" not in content:
-        abort(404, "Missing name")
+        abort(400, "Missing name")
 
     amenity = storage.models()['Amenity'](**content)
     amenity.save()
@@ -61,7 +61,7 @@ def update_amenity(amenity_id):
     Updates a state based on the id
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
     amenity = storage.get("Amenity", amenity_id)
 

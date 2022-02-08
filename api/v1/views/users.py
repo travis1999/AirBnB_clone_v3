@@ -44,14 +44,14 @@ def post_user():
     posts a new state
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
 
     required_keys = ["email", "password"]
 
     for key in required_keys:
         if key not in content:
-            abort(404, "Missing {}".format(key))
+            abort(400, "Missing {}".format(key))
 
     user = storage.models()['User'](**content)
     user.save()
@@ -64,7 +64,7 @@ def update_user(user_id):
     Updates a state based on the id
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
     user = storage.get("User", user_id)
 

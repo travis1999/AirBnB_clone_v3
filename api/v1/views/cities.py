@@ -47,12 +47,12 @@ def post_city(state_id):
     posts a new state
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
 
     content = request.get_json()
 
     if "name" not in content:
-        abort(404, "Missing name")
+        abort(400, "Missing name")
 
     state = storage.get("State", state_id)
     if not state:
@@ -70,7 +70,7 @@ def update_city(city_id):
     Updates a state based on the id
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
 
     city = storage.get("State", city_id)

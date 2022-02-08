@@ -44,11 +44,11 @@ def post_state():
     posts a new state
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
 
     if "name" not in content:
-        abort(404, "Missing name")
+        abort(400, "Missing name")
 
     state = storage.models()['State'](**content)
     state.save()
@@ -61,7 +61,7 @@ def update_state(state_id):
     Updates a state based on the id
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
     state = storage.get("State", state_id)
 

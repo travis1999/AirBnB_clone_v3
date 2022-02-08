@@ -47,15 +47,12 @@ def post_place(city_id):
     posts a new city
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
 
     content = request.get_json()
 
     if "user_id" not in content:
-        abort(404, "Missing user_id")
-
-    if "name" not in content:
-        abort(404, "Missing name")
+        abort(400, "Missing user_id")
 
     user = storage.get("User", content["user_id"])
     if not user:
@@ -78,7 +75,7 @@ def update_place(place_id):
     Updates a city based on the id
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
 
     place = storage.get("Place", place_id)

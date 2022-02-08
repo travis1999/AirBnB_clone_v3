@@ -48,7 +48,7 @@ def post_review(place_id):
     posts a new city
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
 
     content = request.get_json()
 
@@ -56,7 +56,7 @@ def post_review(place_id):
 
     for k in required_fields:
         if k not in content:
-            abort(404, "Missing {}".format(k))
+            abort(400, "Missing {}".format(k))
 
     user = storage.get("User", content["user_id"])
     if not user:
@@ -79,7 +79,7 @@ def update_review(review_id):
     Updates a city based on the id
     """
     if request.content_type != 'application/json':
-        abort(404, "Not a JSON")
+        abort(400, "Not a JSON")
     content = request.get_json()
 
     review = storage.get("Review", review_id)
