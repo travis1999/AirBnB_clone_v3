@@ -68,14 +68,7 @@ class FileStorage:
         if not self.__objects:
             self.reload()
 
-        if cls is None:
-            return len(self.__objects)
-
-        count = 0
-        for value in self.__objects.values():
-            value = classes[cls] if isinstance(cls, str) else cls
-            count += 1 if value.__class__ == cls else 0
-        return count
+        return len(self.all(cls))
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""

@@ -74,10 +74,9 @@ class DBStorage:
             self.reload()
 
         if cls is not None:
-            print(cls)
             return self.__session.query(cls).count()
 
-        return sum(self.__session.query(cls).count() for cls in classes.values())
+        return len(self.all())
 
     def all(self, cls=None):
         """query on the current database session"""
