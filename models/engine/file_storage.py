@@ -68,7 +68,7 @@ class FileStorage:
         if not self.__objects:
             self.reload()
 
-        if cls is not None:
+        if cls is None:
             return len(self.__objects)
 
         count = 0
