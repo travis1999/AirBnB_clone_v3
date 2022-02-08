@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""# -*- coding: utf-8 -*"""
+"""app module"""
 
 from flask import Flask, jsonify
 from api.v1.views import app_views

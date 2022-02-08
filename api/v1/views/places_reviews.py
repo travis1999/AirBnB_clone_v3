@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""# reviews api"""
+""" reviews api"""
 
-from api.v1.app import app_views
+from api.v1.views import app_views
 from flask import jsonify, request, abort
 from models import storage
 
